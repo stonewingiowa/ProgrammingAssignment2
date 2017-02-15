@@ -2,6 +2,7 @@
 makeCacheMatrix <- function(x = matrix()) {
       
       #prepare the set function
+      #initialize the value
       inv <- NULL
       set <- function(y) {
             x <<- y
@@ -22,14 +23,17 @@ makeCacheMatrix <- function(x = matrix()) {
 #the cacheSolve function:
 cacheSolve <- function(x, ...) {
       
-      #invise from the cache
+      #inverse from the cache
       inv <- x$getInverse()
       if (!is.null(inv)) {
+            #sent the message info
             message("getting cached data")
             return(inv)
       }
       mat <- x$get()
       inv <- solve(mat, ...)
+      #inverse 
       x$setInverse(inv)
       inv
 }
+
